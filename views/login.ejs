@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/head.ejs %>
+<body>
+    <div class="hero is-light" style="height: 100vh">
+        <div class="container">
+            
+            <div class="columns">
+                <div class="column is-3-desktop 
+                                   is-offset-4-desktop
+                                   is-12-tablet" id="login-ting">
+                    <h1 class="muli size-1">Sign in to Byzon</h1>
+                    <br>
+                    <form>
+                        <div class="field">
+                            <label for="name">Username or email address</label>
+                            <div class="control">
+                                <input type="text" class="input" name="name">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                        <label for="password">Password</label>                            
+                            <div class="control">
+                                <input type="password" class="input" name="password">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="field">
+                            <div class="control">
+                                <input type="submit" class="button is-success is-fullwidth">   
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
