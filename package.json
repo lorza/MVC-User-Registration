@@ -1,0 +1,15 @@
+{
+  "name": "amazon-bitcoin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lorza/doyouknowdewae.git",
+  "author": "<christianlorza@googlemail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.9"
+  }
+}
