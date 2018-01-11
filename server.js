@@ -18,6 +18,10 @@ app.use("/resources/bulma", express.static("node_modules/bulma"));
 
 app.get("/", function (req, res) {
     res.render("index")
+});
+
+app.get("/login", function (req, res) {
+    res.render("login");
 })
 
 app.listen(port, () => {
