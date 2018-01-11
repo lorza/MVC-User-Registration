@@ -1,0 +1,31 @@
+#navbar {
+    border-bottom: 1px solid lightgrey;
+}
+
+.black {
+    font-family: "muli";
+    font-weight: 900;
+}
+
+.muli {
+    font-family: "muli";
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.size-02 {font-size: .2em}
+.size-03 {font-size: .3em}
+.size-04 {font-size: .4em}
+.size-05 {font-size: .5em}
+.size-1  {font-size: 1em}
+.size-2  {font-size: 2em}
+.size-3  {font-size: 3em}
+.size-4  {font-size: 4em}
+.size-5  {font-size: 5em}
+.size-6  {font-size: 6em}
+
+.lh {
+    line-height: 70px;
+}
