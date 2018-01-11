@@ -1,6 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var port = 3000;
+var port = 80;
 var mongoose = require("mongoose");
 var jwt = require("jsonwebtoken");
 var uid = require("crypto-random-string");
