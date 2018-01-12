@@ -12,31 +12,47 @@
                     <% if (message.length > 0 ) {%>
                         <div class="notification is-danger"><%= message %></div>
                     <% } %>
-                    <h1 class="muli size-1">Sign in to Byzon</h1>
+                    <h1 class="muli size-1">Register</h1>
                     <br>
                     <form action="/signup"  method="POST" id="form">
                         <div class="field">
-                            <label for="name">Username or email address</label>
+                            <label for="name">Username</label>
                             <div class="control">
                                 <input type="text" class="input" name="email">
                             </div>
                         </div>
 
                         <div class="field">
-                        <label for="password">Password</label>                            
+                            <label for="name">Email address</label>
+                            <div class="control">
+                                <input type="text" class="input" name="email">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="password">Password</label>                            
                             <div class="control">
                                 <input type="password" class="input" name="password">
                             </div>
                         </div>
+
+                        <div class="field">
+                            <label for="password">Confirm Password</label>                            
+                            <div class="control">
+                                <input type="password" class="input" name="password">
+                            </div>
+                        </div>
+
+                        
                         <br>
                         <div class="field">
                             <div class="control">
-                                <input type="submit" class="button is-success is-fullwidth">   
+                                <input type="submit" class="button is-success is-fullwidth" value="Register">   
                             </div>
                         </div>
                     </form>
                     <br>
-                    <p class="muli has-text-centered" id="form-sub">New to Crypto? <a href="#" class="has-text-info">Create an account</a></p>
+                    <p class="muli has-text-centered" id="form-sub">Already have an account? <a href="#" class="has-text-info">Login</a></p>
                 </div>
             </div>
         </div>

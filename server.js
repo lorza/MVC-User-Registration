@@ -38,5 +38,5 @@ require("./config/passport")(passport);
 require("./routes")(app, passport);
 
 app.listen(port, () => {
-    log("Server is running B..." + port);
+    log("Server is running on port: " + port);
 });

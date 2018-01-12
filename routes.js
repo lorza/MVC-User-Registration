@@ -6,7 +6,9 @@ module.exports = function(app, passport) {
     app.get("/login", function (req, res) {
         res.render("login", {message: req.flash("loginMessage")});
     });
-
+    app.get("/register", function (req, res) {
+        res.render("register", {message: req.flash("registerMessage")});
+    });
 
     app.post("/signup", passport.authenticate("local-signup", {
         successRedirect: "/", 

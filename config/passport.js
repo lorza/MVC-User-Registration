@@ -1,6 +1,6 @@
 var LocalStrategy = require("passport-local").Strategy;
 
-var User = require("../models/user");
+var User = require("../models/User");
 
 module.exports = function(passport) {
     passport.serializeUser(function(user, done){
@@ -30,7 +30,6 @@ module.exports = function(passport) {
                 if (user) {
                     return done(null, false, req.flash("signupMessage", "That email is already taken"));
                 } else {
-                    console.log(user);
                     var newUser = new User();
                     newUser.local.email = email;
                     newUser.local.password = newUser.generateHash(password);
