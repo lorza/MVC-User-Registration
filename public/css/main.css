@@ -46,3 +46,7 @@
     border: 1px solid lightgrey;
     border-radius: 3px;
 }
+
+.sub-mar {
+    margin-bottom: 10px;
+}
