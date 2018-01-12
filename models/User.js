@@ -4,13 +4,17 @@ var uid = require("crypto-random-string");
 
 var userSchema = mongoose.Schema({
     local: {
-        // username: String, 
+        username: String, 
         email: String, 
         password: String,
         uid: {
             type: String, 
             default: uid(30),
-        } 
+        },
+        admin: {
+            type: Boolean,
+            default: false, 
+        }
     }
 });
 

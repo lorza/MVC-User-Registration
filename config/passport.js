@@ -15,35 +15,34 @@ module.exports = function(passport) {
 
     // SIGNUP
     passport.use("local-signup", new LocalStrategy({
-        // usernameFeild: "username",
-        usernameField: "email",
-        passwordField: "password",
         passReqToCallback: true,
     },
-    function(req, email, password, done) {
-        process.nextTick(function() {
-            User.findOne({"local.email" : email}, function(err, user){
-                if (err) {
-                    return done(err);
-                }
-
-                if (user) {
-                    return done(null, false, req.flash("signupMessage", "That email is already taken"));
-                } else {
-                    var newUser = new User();
-                    newUser.local.email = email;
-                    newUser.local.password = newUser.generateHash(password);
+    function (req, username, password, done) {
+        User.findOne({"username": username}, function(err, user) {
+            if (err) {
+                console.log("there was an error some how idk");
+                return done(err);
+            }
+            if (user) {
+                return done(null, false, req.flash("signupMessage", "That email is taken.. peak times"));
+            } else {
+                var newUser = new User();
                 
-                    newUser.save(function(err) {
-                        if (err) {
-                            throw err;
-                        console.log("user successfully created");
-                        console.log(newUser);
-                        return done(null, newUser);
-                        };
-                    });
-                };
-            });
+                newUser.local.username = username;
+                newUser.local.email = req.params.email;
+                newUser.local.password = newUser.generateHash(password);
+
+                newUser.save(function(err) {
+                    if (err) {
+                        console.log("peak there was an error");
+                        throw err;
+                    }
+
+                    console.log("User successfully created");
+                    console.log(newUser);
+                    return done(null, newUser);
+                })
+            }
         });
     }
     ));
