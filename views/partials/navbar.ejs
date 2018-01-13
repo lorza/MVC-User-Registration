@@ -3,7 +3,7 @@
         <div class="navbar-brand">
             <div class="navbar-item">
                 <a href="/">
-                    <h1 class="size-1 muli has-text-dark">Bitcoin Overpass</h1>
+                    <h1 class=" muli has-text-dark">Bitcoin Overpass</h1>
                 </a>
             </div>
         </div>
@@ -14,6 +14,9 @@
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a href="/profile" class="navbar-link"><%= user.username %></a>
                         <div class="navbar-dropdown">
+                            <% if (user.admin == true) { %>
+                                <a href="/admin" class="navbar-item">Control Panel</a>
+                            <% } %>
                             <a href="/logout" class="navbar-item">Logout</a>
                         </div>
                     </div>

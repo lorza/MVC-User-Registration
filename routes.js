@@ -24,6 +24,19 @@ module.exports = function(app, passport) {
         res.redirect("/");
     });
 
+    // ADMIN
+    app.get("/admin", isAdmin, function (req, res) {
+        res.render("admin/admin.dashboard.ejs", {
+            user: req.user,
+        })
+    });
+            app.get("/admin/customers", isAdmin, function (req, res) {
+                res.render("admin/admin.customers.ejs", {
+                    user: req.user,
+                })
+            });
+    // =============
+
     // ================================================================
     app.post("/signup", passport.authenticate("local-signup", {
         successRedirect: "/login", 
@@ -43,5 +56,18 @@ module.exports = function(app, passport) {
         }
 
         res.redirect("/");
+    }
+
+    function isAdmin(req, res, next) {
+        
+        if (typeof req.user == "undefined") {
+            return res.redirect("/");
+        }
+
+        if (req.user.admin == true) {
+            return next();
+        }
+        return res.send("You don't have permissions to view this page");
+        // redirect("/");
     }
 };
