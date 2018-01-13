@@ -10,17 +10,53 @@
                 <div class="columns">
                     <div class="column is-half">
                         <h1 class="black size-4 lh">Select Your Item, Pay In Crypto. <br> We'll do the rest</h1>
-                        <p class="content muli">
+                        <p class="content muli has-text-grey">
                             We understand it can be frustrating, having a wallet full of crypto but being limited 
                             to what you can buy due to the few places out there accepting them as payment. We hope to act
                             as the bridge between you and the products you want.
                         </p>
 
-                        <button class="button">Get Started</button>
+                        <!-- <button class="button">Get Started</button> -->
                     </div>  
-                    
-                    <div class="column is-half">
-                        <!-- <img src="https://www.canbike.org/public/images/030114/Bitcoin_Logo.png" class="image" width="600px" height="480px"> -->
+                    <div class="column is-1"></div>
+                    <div class="column is-4">
+                        <form action="/signup"  method="POST" id="form">
+                            <div class="field">
+                                <label for="name">Username</label>
+                                <div class="control">
+                                    <input type="text" class="input" name="username">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="name">Email address</label>
+                                <div class="control">
+                                    <input type="text" class="input" name="email">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="password">Password</label>                            
+                                <div class="control">
+                                    <input type="password" class="input" name="password">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="password">Confirm Password</label>                            
+                                <div class="control">
+                                    <input type="password" class="input" name="confirm-password">
+                                </div>
+                            </div>
+
+                            
+                            <br>
+                            <div class="field">
+                                <div class="control">
+                                    <input type="submit" class="button is-success is-fullwidth" value="Sign Up">   
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     
                 </div>

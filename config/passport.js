@@ -18,19 +18,19 @@ module.exports = function(passport) {
         passReqToCallback: true,
     },
     function (req, username, password, done) {
-        User.findOne({"username": username}, function(err, user) {
+        User.findOne({"username": req.body.username}, function(err, user) {
             if (err) {
                 console.log("there was an error some how idk");
                 return done(err);
             }
             if (user) {
-                return done(null, false, req.flash("signupMessage", "That email is taken.. peak times"));
+                return done(null, false, req.flash("signupMessage", "That email has been taken."));
             } else {
                 var newUser = new User();
                 
-                newUser.local.username = username;
-                newUser.local.email = req.params.email;
-                newUser.local.password = newUser.generateHash(password);
+                newUser.username = req.body.username;
+                newUser.email = req.body.email;
+                newUser.password = newUser.generateHash(req.body.password);
 
                 newUser.save(function(err) {
                     if (err) {
@@ -41,9 +41,32 @@ module.exports = function(passport) {
                     console.log("User successfully created");
                     console.log(newUser);
                     return done(null, newUser);
-                })
+                });
             }
         });
     }
     ));
+
+    passport.use("local-login", new LocalStrategy({
+        passReqToCallback: true
+    },
+    function (req, username, password, done) {
+        User.findOne({"username": username}, function(err, done) {
+            if (err) {
+                console.log("There was an error querying for a user");
+                return done(err)
+            }
+
+            if (!user) {
+                return done(null, false, req.flash("loginMessage", "No user found"));
+            }
+
+            if (!user.validatePassword(password)) {
+                return done(null, false, req.flash("loginMessage", "Incorrect Password"));
+            }
+            console.log("WE GOOD. WE LOGGED IN YEAH?");
+            return done(null, user);
+        })
+    }    
+    ))
 };

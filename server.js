@@ -24,15 +24,19 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(flash());
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
 app.use("/resources/css", express.static("public/css"));
 app.use("/resources/bulma", express.static("node_modules/bulma"));
-app.use(session({secret: "doyouknowdewae?showmedewaemyqueen"})); // session secret
+app.use(session({
+    secret: "doyouknowdewae?showmedewaemyqueen",
+    resave: true, 
+    saveUninitialized: false,     
+})); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 require("./config/passport")(passport);
 require("./routes")(app, passport);
