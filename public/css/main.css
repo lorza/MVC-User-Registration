@@ -50,3 +50,8 @@
 .sub-mar {
     margin-bottom: 10px;
 }
+
+.notif-danger {
+    background-color: #e06b83;
+    color: white;
+}

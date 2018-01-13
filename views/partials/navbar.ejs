@@ -2,7 +2,9 @@
     <div class="container">
         <div class="navbar-brand">
             <div class="navbar-item">
-                <h1 class="size-2">Bitcoin Overpass</h1>
+                <a href="/">
+                    <h1 class="size-1 muli has-text-dark">Bitcoin Overpass</h1>
+                </a>
             </div>
         </div>
 
@@ -10,7 +12,11 @@
             <div class="navbar-end">
                 <!-- <a href="#" class="navbar-item">How it works</a> -->
                 <!-- <a href="#" class="navbar-item">What we do</a> -->
-                <a href="/login" class="navbar-item">Login</a>
+                <% if (this.user) { %>
+                    <a href="/profile" class="navbar-item"><%= user.username %></a>
+                <% } else {%>
+                    <a href="/login" class="navbar-item">Login</a>
+                <% } %>
             </div>
         </div>
     </div>

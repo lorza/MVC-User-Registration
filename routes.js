@@ -8,10 +8,18 @@ module.exports = function(app, passport) {
     app.get("/login", function (req, res) {
         res.render("login", {message: req.flash("loginMessage")});
     });
+
     app.get("/register", function (req, res) {
         res.render("register", {message: req.flash("signupMessage")});
     });
 
+    app.get("/profile", isLoggedIn, function(req, res) {
+        res.render("profile", {
+            user: req.user, 
+        })
+    });
+
+    // ================================================================
     app.post("/signup", passport.authenticate("local-signup", {
         successRedirect: "/login", 
         failureRedirect: "/register",
@@ -24,7 +32,7 @@ module.exports = function(app, passport) {
         failureFlash: true,
     }));
 
-    function isAuth(req, res, next) {
+    function isLoggedIn(req, res, next) {
         if (req.isAuthenticated()) {
             return next();
         }

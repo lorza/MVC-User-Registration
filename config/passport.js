@@ -48,25 +48,30 @@ module.exports = function(passport) {
     ));
 
     passport.use("local-login", new LocalStrategy({
-        passReqToCallback: true
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true,
     },
-    function (req, username, password, done) {
-        User.findOne({"username": username}, function(err, done) {
+    function (req, email, password, done) {
+        console.log("HERE IS THE PASSWORD: ", password);
+        User.findOne({"email": email}, function(err, user) {
             if (err) {
-                console.log("There was an error querying for a user");
-                return done(err)
+                console.log("There was an error with: ", "submitting");
+                return done(err);
             }
 
             if (!user) {
+                console.log("user not found")
                 return done(null, false, req.flash("loginMessage", "No user found"));
             }
 
-            if (!user.validatePassword(password)) {
-                return done(null, false, req.flash("loginMessage", "Incorrect Password"));
+            if (!user.validPassword(password)) {
+                return done(null, false, req.flash("loginMessage", "Wrong password"));
             }
-            console.log("WE GOOD. WE LOGGED IN YEAH?");
+
             return done(null, user);
-        })
-    }    
+        });
+    }
     ))
-};
+    
+}; // module export
