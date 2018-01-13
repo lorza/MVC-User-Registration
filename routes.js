@@ -1,7 +1,7 @@
 module.exports = function(app, passport) {
     app.get("/", function (req, res) {
         res.render("index", {
-            message: "hello world",
+            user: req.user
         })
     });
     
@@ -17,6 +17,11 @@ module.exports = function(app, passport) {
         res.render("profile", {
             user: req.user, 
         })
+    });
+
+    app.get("/logout", function (req, res) {
+        req.logout();
+        res.redirect("/");
     });
 
     // ================================================================

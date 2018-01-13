@@ -10,10 +10,14 @@
 
         <div class="navbar-menu">
             <div class="navbar-end">
-                <!-- <a href="#" class="navbar-item">How it works</a> -->
-                <!-- <a href="#" class="navbar-item">What we do</a> -->
-                <% if (this.user) { %>
-                    <a href="/profile" class="navbar-item"><%= user.username %></a>
+                <% if (user) { %>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a href="/profile" class="navbar-link"><%= user.username %></a>
+                        <div class="navbar-dropdown">
+                            <a href="/logout" class="navbar-item">Logout</a>
+                        </div>
+                    </div>
+
                 <% } else {%>
                     <a href="/login" class="navbar-item">Login</a>
                 <% } %>
