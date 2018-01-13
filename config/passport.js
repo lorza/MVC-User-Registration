@@ -34,7 +34,6 @@ module.exports = function(passport) {
 
                 newUser.save(function(err) {
                     if (err) {
-                        console.log("peak there was an error");
                         throw err;
                     }
 
@@ -53,15 +52,12 @@ module.exports = function(passport) {
         passReqToCallback: true,
     },
     function (req, email, password, done) {
-        console.log("HERE IS THE PASSWORD: ", password);
         User.findOne({"email": email}, function(err, user) {
             if (err) {
-                console.log("There was an error with: ", "submitting");
                 return done(err);
             }
 
             if (!user) {
-                console.log("user not found")
                 return done(null, false, req.flash("loginMessage", "No user found"));
             }
 
