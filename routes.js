@@ -1,3 +1,5 @@
+var User = require("./models/User");
+
 module.exports = function(app, passport) {
     app.get("/", function (req, res) {
         res.render("index", {
@@ -31,9 +33,24 @@ module.exports = function(app, passport) {
         })
     });
             app.get("/admin/customers", isAdmin, function (req, res) {
-                res.render("admin/admin.customers.ejs", {
-                    user: req.user,
-                })
+                
+                var userCollection;
+                
+                User.find({}, function(err, users) {
+                    if (err) {
+                        return err;
+                    }
+                    
+                    console.log(users);
+                    res.render("admin/admin.customers.ejs", {
+                        user: req.user, 
+                        users: users,
+                    })
+                });
+                
+                // res.render("admin/admin.customers.ejs", {
+                //     user: req.user,
+                // })
             });
     // =============
 
