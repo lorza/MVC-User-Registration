@@ -28,8 +28,8 @@ app.use(flash());
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
-app.use("/resources/css", express.static("public/css"));
-app.use("/resources/bulma", express.static("node_modules/bulma"));
+app.use("*/resources/css", express.static("public/css"));
+app.use("*/resources/bulma", express.static("node_modules/bulma"));
 app.use(session({
     secret: "doyouknowdewae?showmedewaemyqueen",
     resave: true, 

@@ -6,11 +6,33 @@
   <!-- START NAV -->
   <%- include ../partials/navbar.ejs %>
   <br>
-  
-  <ul>
-    <% for(var i=0; i < users.length; i++) {%>
-      <li><%= users[i].username %></li>
-    <% } %>
-  </ul>
+
+  <div class="container">
+    <h1 class="black size-4">Customers</h1>  
+    <hr>
+    <table class="table is-striped is-fullwidth is-bordered">
+      <thead>
+        <tr>
+          <td>username</td>
+          <td>email</td>
+          <td>_id</td>
+          <td>active orders</td>
+          <td>total orders</td>
+        </tr>
+      </thead>
+        <% for(var i=0; i < users.length; i++) {%>
+          <tr>
+            <td><%= users[i].username %></td>
+            <td><%= users[i].email %></td>
+            <td><%= users[i].uid %></td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        <% } %>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>

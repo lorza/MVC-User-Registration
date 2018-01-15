@@ -1,4 +1,5 @@
 var User = require("./models/User");
+var axios = require("axios");
 
 module.exports = function(app, passport) {
     app.get("/", function (req, res) {
@@ -28,9 +29,10 @@ module.exports = function(app, passport) {
 
     // ADMIN
     app.get("/admin", isAdmin, function (req, res) {
+
         res.render("admin/admin.dashboard.ejs", {
             user: req.user,
-        })
+        });
     });
             app.get("/admin/customers", isAdmin, function (req, res) {
                 
@@ -53,6 +55,13 @@ module.exports = function(app, passport) {
                 // })
             });
     // =============
+
+    // STATS
+    app.get("/stats/users", function (req, res) {
+        User.find({}, function(err, users) {
+            res.send(users);
+        })
+    })
 
     // ================================================================
     app.post("/signup", passport.authenticate("local-signup", {
